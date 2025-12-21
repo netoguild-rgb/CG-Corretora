@@ -19,31 +19,25 @@
             line-height: 1.6;
         }
 
-        /* --- 1. HEADER COM GLASSMORPHISM --- */
+        /* --- HEADER PADRÃO (SÓLIDO) --- */
         header {
-            position: sticky; /* Cola no topo */
+            position: sticky;
             top: 0;
             width: 100%;
             z-index: 1000;
             padding: 20px 5%;
-            
-            /* O EFEITO DE VIDRO */
-            background: rgba(255, 255, 255, 0.7); /* Branco semitransparente */
-            backdrop-filter: blur(15px);          /* O desfoque mágico */
-            -webkit-backdrop-filter: blur(15px);  /* Para Safari */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-
+            background-color: #ffffff; /* Fundo Branco Sólido */
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #0056b3; /* Azul Institucional */
+            color: #0056b3;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -65,9 +59,9 @@
             color: #0056b3;
         }
 
-        /* --- HERO SECTION (Para testar o vidro passando por cima) --- */
+        /* --- HERO SECTION --- */
         .hero {
-            height: 100vh;
+            height: 90vh; /* Altura um pouco menor */
             background: linear-gradient(135deg, #0056b3, #00a8cc);
             color: white;
             display: flex;
@@ -75,8 +69,6 @@
             justify-content: center;
             text-align: center;
             padding: 0 20px;
-            margin-top: -80px; /* Compensa a altura do header fixo */
-            padding-top: 80px;
         }
 
         .hero-content h1 {
@@ -95,14 +87,14 @@
             background: #fff;
             color: #0056b3;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 5px; /* Bordas menos arredondadas (estilo mais clássico) */
             font-weight: bold;
-            transition: transform 0.3s;
+            transition: background 0.3s;
             display: inline-block;
         }
 
         .btn-cta:hover {
-            transform: scale(1.05);
+            background: #f0f0f0;
         }
 
         /* --- SEÇÕES GERAIS --- */
@@ -127,14 +119,9 @@
         .card {
             background: white;
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            border: 1px solid #eee; /* Borda sutil */
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px); /* Leve subida ao passar o mouse */
         }
 
         .card h3 {
@@ -142,22 +129,10 @@
             color: #333;
         }
 
-        /* --- 2. CSS DA ANIMAÇÃO SCROLL REVEAL --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(80px); /* Começa deslocado para baixo */
-            transition: all 1s ease;     /* Duração da animação */
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);    /* Volta para a posição original */
-        }
-
         /* Ajuste para telas pequenas */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2rem; }
-            nav { display: none; } /* Simplificado para o exemplo */
+            nav { display: none; }
         }
     </style>
 </head>
@@ -176,7 +151,7 @@
     </header>
 
     <section class="hero" id="hero">
-        <div class="hero-content reveal">
+        <div class="hero-content">
             <h1>Segurança para o que importa</h1>
             <p>Os melhores planos de seguro auto, vida e residencial em Campina Grande.</p>
             <a href="#contato" class="btn-cta">Fazer Cotação</a>
@@ -184,20 +159,20 @@
     </section>
 
     <section id="servicos">
-        <h2 class="section-title reveal">Nossos Seguros</h2>
+        <h2 class="section-title">Nossos Seguros</h2>
         
         <div class="servicos-grid">
-            <div class="card reveal">
+            <div class="card">
                 <h3>🚗 Seguro Auto</h3>
                 <p>Proteção contra roubo, colisão e assistência 24h para seu veículo rodar tranquilo.</p>
             </div>
 
-            <div class="card reveal">
+            <div class="card">
                 <h3>🏠 Seguro Residencial</h3>
                 <p>Cuide do seu lar. Cobertura para incêndios, danos elétricos e roubos.</p>
             </div>
 
-            <div class="card reveal">
+            <div class="card">
                 <h3>❤️ Seguro de Vida</h3>
                 <p>Garanta o futuro financeiro da sua família com planos flexíveis.</p>
             </div>
@@ -205,7 +180,7 @@
     </section>
 
     <section id="sobre" style="background: white;">
-        <div class="reveal">
+        <div>
             <h2 class="section-title">Quem Somos</h2>
             <p style="text-align: center; max-width: 800px; margin: 0 auto;">
                 A <strong>CG Corretora</strong> atua no mercado de Campina Grande trazendo as melhores soluções das maiores seguradoras do Brasil. Nosso compromisso é desburocratizar a sua proteção e garantir o melhor custo-benefício.
@@ -214,7 +189,7 @@
     </section>
 
     <section id="contato">
-        <div class="card reveal" style="max-width: 600px; margin: 0 auto;">
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
             <h3>Fale Conosco</h3>
             <p>Pronto para cotar? Entre em contato agora.</p>
             <br>
@@ -225,31 +200,6 @@
     <footer style="text-align: center; padding: 20px; color: #666; font-size: 0.9rem;">
         &copy; 2025 CG Corretora de Seguros. Todos os direitos reservados.
     </footer>
-
-    <script>
-        // Função para verificar a posição dos elementos
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            var windowHeight = window.innerHeight;
-            var elementVisible = 100; // Distância do topo para ativar
-
-            for (var i = 0; i < reveals.length; i++) {
-                var elementTop = reveals[i].getBoundingClientRect().top;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                } 
-                // Se quiser que a animação suma ao subir a tela, descomente a linha abaixo:
-                // else { reveals[i].classList.remove("active"); }
-            }
-        }
-
-        // Ativa a função ao rolar a página
-        window.addEventListener("scroll", reveal);
-
-        // Ativa uma vez ao carregar para mostrar o que já está na tela
-        reveal();
-    </script>
 
 </body>
 </html>
