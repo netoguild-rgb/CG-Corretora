@@ -12,9 +12,9 @@
     <style>
         /* --- ESTILOS GERAIS --- */
         :root {
-            --primary-color: #1a2530; /* Azul Escuro */
-            --secondary-color: #ff6b35; /* Laranja */
-            --accent-color: #f4f7f6;
+            --primary-color: #1a2530; /* Azul Escuro Profundo */
+            --secondary-color: #ff6b35; /* Laranja Vibrante */
+            --accent-color: #f4f7f6; /* Fundo Cinza Claro */
             --text-dark: #333333;
             --text-light: #ffffff;
             --success: #25d366; /* Verde WhatsApp */
@@ -60,7 +60,7 @@
         .hero-content h1 { font-size: 3rem; margin-bottom: 20px; color: var(--text-light); line-height: 1.2; }
         .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
 
-        /* --- TRUST BAR (LOGOS DAS SEGURADORAS) --- */
+        /* --- TRUST BAR (LOGOS CORRIGIDAS) --- */
         .trust-bar { background-color: #fff; padding: 40px 0; border-bottom: 1px solid #eee; }
         .trust-grid { 
             display: flex; 
@@ -70,17 +70,19 @@
             gap: 40px; 
         }
         .trust-item img {
-            height: 40px; /* Altura padrão */
+            height: 50px;
             width: auto;
-            filter: grayscale(100%); /* Preto e branco */
+            max-width: 140px;
+            filter: grayscale(100%); /* Preto e branco para elegância */
             opacity: 0.6;
             transition: all 0.3s ease;
             cursor: pointer;
+            object-fit: contain; /* Impede distorção */
         }
         .trust-item img:hover {
             filter: grayscale(0%); /* Cor original ao passar mouse */
             opacity: 1;
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         /* SERVIÇOS */
@@ -112,7 +114,7 @@
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
             .hero-content h1 { font-size: 2rem; }
-            .trust-item img { height: 30px; margin: 10px; }
+            .trust-item img { height: 35px; margin: 10px; }
         }
     </style>
 </head>
@@ -142,7 +144,7 @@
             <p style="margin-bottom: 30px; opacity: 0.9;">Especialistas em encontrar o melhor custo-benefício para sua proteção.</p>
             <div class="hero-buttons">
                 <a href="#cotacao" class="btn btn-primary">Fazer Cotação Online</a>
-                <a href="https://wa.me/5583999999999?text=Olá, gostaria de uma cotação" class="btn btn-outline" target="_blank">
+                <a href="https://wa.me/5583SEUNUMERO?text=Olá, gostaria de uma cotação" class="btn btn-outline" target="_blank">
                     <i class="fab fa-whatsapp"></i> Falar no WhatsApp
                 </a>
             </div>
@@ -152,19 +154,22 @@
     <div class="trust-bar">
         <div class="container trust-grid">
             <div class="trust-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Porto_Seguro_logo.svg" alt="Porto Seguro" title="Porto Seguro">
+                <img src="https://logo.clearbit.com/portoseguro.com.br" alt="Porto Seguro">
             </div>
             <div class="trust-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Allianz_logo.svg" alt="Allianz" title="Allianz Seguros">
+                <img src="https://logo.clearbit.com/allianz.com.br" alt="Allianz">
             </div>
             <div class="trust-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bradesco_logo.svg" alt="Bradesco Seguros" title="Bradesco Seguros">
+                <img src="https://logo.clearbit.com/bradescoseguros.com.br" alt="Bradesco Seguros">
             </div>
             <div class="trust-item">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Mapfre_logo.svg/2560px-Mapfre_logo.svg.png" alt="Mapfre" title="Mapfre Seguros">
+                <img src="https://logo.clearbit.com/mapfre.com.br" alt="Mapfre">
             </div>
              <div class="trust-item">
-                <img src="https://logodownload.org/wp-content/uploads/2014/05/sulamerica-logo-1.png" alt="SulAmérica" title="SulAmérica Seguros">
+                <img src="https://logo.clearbit.com/azulseguros.com.br" alt="Azul Seguros">
+            </div>
+             <div class="trust-item">
+                <img src="https://logo.clearbit.com/sulamerica.com.br" alt="SulAmérica">
             </div>
         </div>
     </div>
@@ -274,7 +279,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5583999999999?text=Olá, vim pelo site e gostaria de uma cotação." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5583SEUNUMERO?text=Olá, vim pelo site e gostaria de uma cotação." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
