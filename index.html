@@ -55,7 +55,7 @@
         .nav-links a:hover { color: var(--secondary-color); }
         .mobile-menu-btn { display: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; }
 
-        /* --- HERO SECTION (Animação Ultra Lenta 8s) --- */
+        /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(to right, rgba(26, 37, 48, 0.4) 0%, rgba(26, 37, 48, 0.4) 100%), url('famili.png');
             background-size: cover;
@@ -68,7 +68,6 @@
             overflow: hidden; 
         }
 
-        /* Animação */
         @keyframes slideUpFade {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -77,7 +76,6 @@
         .hero-content {
             width: 45%;
             min-width: 400px;
-            /* AQUI: Mudei para 8s (super suave) */
             animation: slideUpFade 8s ease-out forwards;
         }
         .hero-content h1 { 
@@ -105,11 +103,47 @@
             flex-wrap: wrap; 
         }
 
-        /* --- TRUST BAR --- */
-        .trust-bar { background-color: #fff; padding: 40px 0; border-bottom: 1px solid #eee; }
-        .trust-grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; }
-        .trust-item img { height: 64px; width: auto; filter: grayscale(100%); opacity: 0.6; transition: all 0.3s ease; cursor: pointer; }
-        .trust-item img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
+        /* --- TRUST BAR INTERATIVA --- */
+        .trust-bar { background-color: #fff; padding: 50px 0; border-bottom: 1px solid #eee; text-align: center; }
+        .click-hint { font-size: 0.8rem; color: #888; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .trust-grid { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px; margin-bottom: 30px; }
+        
+        .trust-item { position: relative; }
+        .trust-item img { 
+            height: 64px; 
+            width: auto; 
+            filter: grayscale(100%); 
+            opacity: 0.5; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+        }
+        .trust-item img:hover { transform: scale(1.1); opacity: 0.8; }
+        
+        /* Classe ativa quando clicado */
+        .trust-item img.active-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.15);
+        }
+
+        /* Caixa de Informações da Seguradora */
+        .insurer-info-box {
+            display: none; /* Escondido por padrão */
+            background: var(--accent-color);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-left: 4px solid var(--secondary-color);
+            text-align: left;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .insurer-name { font-weight: 800; color: var(--primary-color); font-size: 1.1rem; margin-bottom: 5px; }
+        .insurer-slogan { font-style: italic; color: var(--secondary-color); font-weight: 600; margin-bottom: 10px; font-size: 0.95rem; }
+        .insurer-desc { font-size: 0.9rem; color: #555; line-height: 1.4; }
 
         /* SERVIÇOS */
         .services { padding: 80px 0; }
@@ -162,7 +196,6 @@
                     <span style="font-size: 0.65rem; color: #666; font-weight: 600; letter-spacing: 2px;">DE SEGUROS</span>
                 </div>
             </a>
-
             <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
             <nav>
                 <ul class="nav-links">
@@ -189,13 +222,62 @@
     </section>
 
     <div class="trust-bar">
+        <p class="click-hint">Clique nas marcas para saber mais</p>
         <div class="container trust-grid">
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://portoseguro.com.br&size=128" alt="Porto Seguro"></div>
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://allianz.com.br&size=128" alt="Allianz"></div>
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bradescoseguros.com.br&size=128" alt="Bradesco"></div>
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://mapfre.com.br&size=128" alt="Mapfre"></div>
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://azulseguros.com.br&size=128" alt="Azul Seguros"></div>
-            <div class="trust-item"><img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://sulamerica.com.br&size=128" alt="SulAmérica"></div>
+            
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://portoseguro.com.br&size=128" 
+                     alt="Porto Seguro" 
+                     data-name="Porto Seguro"
+                     data-slogan="Quem tem Porto, tem tudo."
+                     data-desc="Referência nacional em seguros, oferecendo assistência 24h completa para residência e automóvel, com serviços de alta qualidade.">
+            </div>
+
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://allianz.com.br&size=128" 
+                     alt="Allianz"
+                     data-name="Allianz Seguros"
+                     data-slogan="Quem conhece, escolhe."
+                     data-desc="Uma das maiores seguradoras do mundo, presente em mais de 70 países. Solidez financeira e proteção global para seu patrimônio.">
+            </div>
+
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bradescoseguros.com.br&size=128" 
+                     alt="Bradesco Seguros"
+                     data-name="Bradesco Seguros"
+                     data-slogan="Com você. Sempre."
+                     data-desc="Líder de mercado no Brasil e na América Latina. Tradição e confiança que acompanham você em todas as etapas da vida.">
+            </div>
+
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://mapfre.com.br&size=128" 
+                     alt="Mapfre"
+                     data-name="Mapfre"
+                     data-slogan="Cuidamos do que é importante para você."
+                     data-desc="Seguradora global com origem espanhola, especialista em oferecer soluções personalizadas para pessoas e empresas.">
+            </div>
+
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://azulseguros.com.br&size=128" 
+                     alt="Azul Seguros"
+                     data-name="Azul Seguros"
+                     data-slogan="Seguro de carro simplificado."
+                     data-desc="Parte do grupo Porto Seguro, oferece qualidade e eficiência com preços mais acessíveis e foco no essencial.">
+            </div>
+
+            <div class="trust-item">
+                <img src="https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://sulamerica.com.br&size=128" 
+                     alt="SulAmérica"
+                     data-name="SulAmérica"
+                     data-slogan="Saúde Integral."
+                     data-desc="Mais de 120 anos de história. Reconhecida pela excelência em gestão de saúde, vida e previdência.">
+            </div>
+        </div>
+
+        <div id="insurer-info" class="insurer-info-box">
+            <div class="insurer-name" id="info-name">Nome da Seguradora</div>
+            <div class="insurer-slogan" id="info-slogan">"Slogan aqui"</div>
+            <div class="insurer-desc" id="info-desc">Descrição aqui.</div>
         </div>
     </div>
 
@@ -311,6 +393,37 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- LÓGICA DAS LOGOS INTERATIVAS ---
+            const logos = document.querySelectorAll('.trust-item img');
+            const infoBox = document.getElementById('insurer-info');
+            const infoName = document.getElementById('info-name');
+            const infoSlogan = document.getElementById('info-slogan');
+            const infoDesc = document.getElementById('info-desc');
+
+            logos.forEach(logo => {
+                logo.addEventListener('click', () => {
+                    // 1. Remove classe ativa de todas
+                    logos.forEach(l => l.classList.remove('active-logo'));
+                    
+                    // 2. Adiciona na clicada
+                    logo.classList.add('active-logo');
+
+                    // 3. Pega os dados
+                    const name = logo.getAttribute('data-name');
+                    const slogan = logo.getAttribute('data-slogan');
+                    const desc = logo.getAttribute('data-desc');
+
+                    // 4. Preenche a caixa
+                    infoName.textContent = name;
+                    infoSlogan.textContent = `"${slogan}"`;
+                    infoDesc.textContent = desc;
+
+                    // 5. Mostra a caixa
+                    infoBox.style.display = 'block';
+                });
+            });
+
             // MENU MOBILE
             const menuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
