@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": https://netoguild.github.io/cg-corretora,
+  "homepage": "https://netoguild.github.io/cg-corretora",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
