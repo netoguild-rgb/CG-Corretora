@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @layer base {
   :root {
-    /* Cores Base do Novo Design */
+    /* Cores Base do Novo Design (Vision Theme) */
     --background: 0 0% 100%;
     --foreground: 215 25% 15%;
 
@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 215 25% 15%;
 
-    --primary: 24 100% 50%;
+    --primary: 24 100% 50%; /* Laranja vibrante */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
@@ -37,7 +37,7 @@
 
     --radius: 0.75rem;
 
-    /* Cores da Marca (Custom) */
+    /* Cores Personalizadas da Marca */
     --orange: 24 100% 50%;
     --orange-light: 24 100% 55%;
     --orange-dark: 24 100% 45%;
@@ -47,13 +47,12 @@
     --gray-soft: 220 14% 96%;
     --gray-medium: 220 10% 85%;
 
-    /* Sombras e Efeitos */
+    /* Variáveis de Sombra e Gradiente */
     --shadow-soft: 0 4px 20px -4px hsl(var(--navy) / 0.1);
     --shadow-card: 0 8px 30px -8px hsl(var(--navy) / 0.12);
     --shadow-elevated: 0 20px 50px -12px hsl(var(--navy) / 0.15);
     --shadow-orange: 0 8px 25px -6px hsl(var(--orange) / 0.4);
 
-    /* Gradientes */
     --gradient-orange: linear-gradient(135deg, hsl(var(--orange)) 0%, hsl(var(--orange-light)) 100%);
     --gradient-navy: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(var(--navy-light)) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(var(--gray-soft)) 0%, hsl(var(--background)) 100%);
@@ -64,21 +63,10 @@
     --foreground: 210 40% 98%;
     --card: 215 25% 12%;
     --card-foreground: 210 40% 98%;
-    --popover: 215 25% 12%;
-    --popover-foreground: 210 40% 98%;
     --primary: 24 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
-    --ring: 24 100% 50%;
   }
 }
 
@@ -102,32 +90,18 @@
   }
   .bg-gradient-orange { background-image: var(--gradient-orange); }
   .bg-gradient-navy { background-image: var(--gradient-navy); }
-  .bg-gradient-hero { background-image: var(--gradient-hero); }
   
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .shadow-elevated { box-shadow: var(--shadow-elevated); }
   .shadow-orange { box-shadow: var(--shadow-orange); }
 
-  /* Animações Personalizadas */
+  /* Animações Keyframes */
   @keyframes fade-in-up {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes slide-in-right {
-    from { opacity: 0; transform: translateX(30px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
   
   .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-  .animate-slide-in-right { animation: slide-in-right 0.5s ease-out forwards; }
-  .animate-float { animation: float 3s ease-in-out infinite; }
-  
-  .animation-delay-100 { animation-delay: 100ms; }
   .animation-delay-200 { animation-delay: 200ms; }
-  .animation-delay-300 { animation-delay: 300ms; }
 }

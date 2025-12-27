@@ -4,8 +4,8 @@ import { Input } from '@/components/ui/input';
 import { Car, Heart, Briefcase, ArrowRight, Shield, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import heroBackground from '@/assets/hero-family.jpg'; // Verifique se esta imagem existe
-import { openTypebot } from '../config'; // Integração funcional
+import heroBackground from '@/assets/hero-family.jpg'; 
+import { openTypebot } from '../config'; 
 
 type TabType = 'auto' | 'saude' | 'vida';
 
@@ -22,25 +22,23 @@ export function HeroSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Integração: Abre o chat ao enviar o formulário
-    // Você pode passar os dados para o typebot se configurado, ou apenas abrir:
     console.log('Dados capturados:', { ...formData, tipo: activeTab });
     openTypebot(); 
   };
 
   return (
     <section
-      id="inicio"
+      id="home" /* ID ajustado para bater certo com o Header */
       className="relative min-h-screen pt-32 pb-20 overflow-hidden flex items-center"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroBackground}
-          alt="Família feliz e protegida"
+          alt="Família protegida"
           className="w-full h-full object-cover"
         />
-        {/* Overlay gradiente para legibilidade */}
+        {/* Camadas de Overlay para dar o tom Navy/Azul Escuro */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/50 via-transparent to-navy/70" />
       </div>
@@ -50,7 +48,7 @@ export function HeroSection() {
           ref={ref}
           className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
         >
-          {/* Texto / Conteúdo da Esquerda */}
+          {/* Conteúdo Texto */}
           <div
             className={cn(
               'space-y-8 opacity-0',
@@ -87,7 +85,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Card de Cotação (Direita) */}
+          {/* Card Flutuante de Cotação */}
           <div
             className={cn(
               'opacity-0',
@@ -99,7 +97,6 @@ export function HeroSection() {
                 Faça sua cotação grátis
               </h2>
 
-              {/* Tabs */}
               <div className="flex bg-navy-dark/50 rounded-xl p-1 mb-6">
                 {tabs.map((tab) => (
                   <button
@@ -118,13 +115,9 @@ export function HeroSection() {
                 ))}
               </div>
 
-              {/* Form - Conectado ao openTypebot */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label
-                    htmlFor="nome"
-                    className="block text-sm font-medium text-white/90 mb-2"
-                  >
+                  <label htmlFor="nome" className="block text-sm font-medium text-white/90 mb-2">
                     Seu nome
                   </label>
                   <Input
@@ -132,19 +125,14 @@ export function HeroSection() {
                     type="text"
                     placeholder="Digite seu nome completo"
                     value={formData.nome}
-                    onChange={(e) =>
-                      setFormData({ ...formData, nome: e.target.value })
-                    }
-                    className="h-12 bg-white/90 border-transparent text-navy-dark placeholder:text-navy-light"
+                    onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
+                    className="h-12 bg-white/90 border-transparent text-navy-dark placeholder:text-navy-light focus-visible:ring-primary"
                     required
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="telefone"
-                    className="block text-sm font-medium text-white/90 mb-2"
-                  >
+                  <label htmlFor="telefone" className="block text-sm font-medium text-white/90 mb-2">
                     WhatsApp
                   </label>
                   <Input
@@ -152,10 +140,8 @@ export function HeroSection() {
                     type="tel"
                     placeholder="(00) 00000-0000"
                     value={formData.telefone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, telefone: e.target.value })
-                    }
-                    className="h-12 bg-white/90 border-transparent text-navy-dark placeholder:text-navy-light"
+                    onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
+                    className="h-12 bg-white/90 border-transparent text-navy-dark placeholder:text-navy-light focus-visible:ring-primary"
                     required
                   />
                 </div>

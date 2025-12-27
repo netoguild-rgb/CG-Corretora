@@ -55,7 +55,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Novas cores do design
+        // IMPORTANTÍSSIMO: As novas cores do layout
         orange: {
           DEFAULT: "hsl(var(--orange))",
           light: "hsl(var(--orange-light))",

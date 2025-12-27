@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Shield } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SITE_CONFIG, openTypebot } from '../config'; // Importando sua config existente
+// Verifica se o caminho do config está correto no teu projeto
+import { SITE_CONFIG, openTypebot } from '../config'; 
 
-// Links do menu (mantive a estrutura do novo design, mas você pode alterar os hrefs se precisar)
+// Ajuste os hrefs conforme as secções que tens no index
 const navItems = [
-  { label: 'Início', href: '#inicio' },
+  { label: 'Início', href: '#home' },
   { label: 'Seguros', href: '#seguros' },
   { label: 'Sobre Nós', href: '#sobre' },
   { label: 'Depoimentos', href: '#depoimentos' },
@@ -42,12 +43,12 @@ export function Header() {
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo Vision Style */}
         <a
-          href="#inicio"
+          href="#home"
           onClick={(e) => {
             e.preventDefault();
-            scrollToSection('#inicio');
+            scrollToSection('#home');
           }}
           className="flex items-center gap-2 group"
         >
@@ -59,7 +60,7 @@ export function Header() {
           </span>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
             <a
@@ -76,10 +77,10 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA Button - Mantendo a função openTypebot */}
+        {/* Botão de Ação */}
         <div className="hidden lg:block">
           <Button
-            onClick={openTypebot} // Funcionalidade Original Preservada
+            onClick={openTypebot}
             className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/20 transition-all hover:scale-105"
             size="default"
           >
@@ -87,7 +88,7 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Menu Mobile */}
         <button
           className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -101,7 +102,7 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu - Design Novo */}
+      {/* Menu Mobile Dropdown */}
       <div
         className={cn(
           'lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border transition-all duration-300 overflow-hidden',
