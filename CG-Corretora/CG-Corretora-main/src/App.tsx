@@ -13,7 +13,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* [CORREÇÃO CRÍTICA]: Adicionado basename para suportar o GitHub Pages */}
+      <BrowserRouter basename="/CG-Corretora">
         <Routes>
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

@@ -3,10 +3,19 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "./NavLink";
-import { SITE_CONFIG, openTypebot } from "../config"; // Importando a config
+import { SITE_CONFIG, openTypebot } from "../config";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Função auxiliar para rolar suavemente até o ID (opcional, mas recomendado com React Router e hash links)
+  const handleScroll = (id: string) => {
+    setIsOpen(false); // Fecha o menu mobile se estiver aberto
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
@@ -22,14 +31,15 @@ export const Header = () => {
 
         {/* Menu Desktop */}
         <nav className="hidden md:flex items-center gap-8">
-          <NavLink href="#home">Início</NavLink>
-          <NavLink href="#seguros">Seguros</NavLink>
-          <NavLink href="#sobre">Sobre Nós</NavLink>
-          <NavLink href="#depoimentos">Depoimentos</NavLink>
+          {/* Use 'to' em vez de 'href' */}
+          <NavLink to="#home">Início</NavLink>
+          <NavLink to="#seguros">Seguros</NavLink>
+          <NavLink to="#sobre">Sobre Nós</NavLink>
+          <NavLink to="#depoimentos">Depoimentos</NavLink>
           
           <Button 
             className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 shadow-lg shadow-primary/20 transition-all hover:scale-105"
-            onClick={openTypebot} // Ação de abrir o Typebot
+            onClick={openTypebot}
           >
             Solicitar Cotação
           </Button>
@@ -45,9 +55,10 @@ export const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <nav className="flex flex-col gap-4 mt-8">
-                <NavLink href="#home" onClick={() => setIsOpen(false)}>Início</NavLink>
-                <NavLink href="#seguros" onClick={() => setIsOpen(false)}>Seguros</NavLink>
-                <NavLink href="#sobre" onClick={() => setIsOpen(false)}>Sobre Nós</NavLink>
+                {/* Correção para 'to' e fechamento do menu */}
+                <NavLink to="#home" onClick={() => setIsOpen(false)}>Início</NavLink>
+                <NavLink to="#seguros" onClick={() => setIsOpen(false)}>Seguros</NavLink>
+                <NavLink to="#sobre" onClick={() => setIsOpen(false)}>Sobre Nós</NavLink>
                 <Button 
                   className="w-full mt-4" 
                   onClick={() => {
