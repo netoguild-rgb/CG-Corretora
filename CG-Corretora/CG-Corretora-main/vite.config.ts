@@ -5,7 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // [CRUCIAL] Isso garante que o site funcione no endereço /cg-corretora/
-  base: "/cg-corretora/",
+  base: "/CG-Corretora/",
   
   server: {
     host: "::",
