@@ -1,175 +1,84 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Car, Heart, Briefcase, ArrowRight, Shield, CheckCircle2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import heroBackground from '@/assets/hero-family.jpg';
+import { Button } from "@/components/ui/button";
+import { Shield, CheckCircle, ArrowRight } from "lucide-react";
+import { openTypebot } from "../config";
 
-type TabType = 'auto' | 'saude' | 'vida';
-
-const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
-  { id: 'auto', label: 'Auto', icon: <Car className="w-4 h-4" /> },
-  { id: 'saude', label: 'Saúde', icon: <Heart className="w-4 h-4" /> },
-  { id: 'vida', label: 'Vida', icon: <Briefcase className="w-4 h-4" /> },
-];
-
-export function HeroSection() {
-  const [activeTab, setActiveTab] = useState<TabType>('auto');
-  const [formData, setFormData] = useState({ nome: '', telefone: '' });
-  const { ref, isVisible } = useScrollAnimation();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', { ...formData, tipo: activeTab });
-  };
-
+export const HeroSection = () => {
   return (
-    <section
-      id="inicio"
-      className="relative min-h-screen pt-32 pb-20 overflow-hidden"
-    >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBackground}
-          alt="Família feliz e protegida"
-          className="w-full h-full object-cover"
-        />
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/50 via-transparent to-navy/70" />
-      </div>
-
-      <div className="container relative z-10">
-        <div
-          ref={ref}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-        >
-          {/* Content */}
-          <div
-            className={cn(
-              'space-y-8 opacity-0',
-              isVisible && 'animate-fade-in-up'
-            )}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-sm rounded-full text-primary text-sm font-medium border border-primary/30">
+    <section id="home" className="pt-32 pb-20 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Texto e Chamada */}
+          <div className="space-y-8 animate-fade-in-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium">
               <Shield className="w-4 h-4" />
-              <span>Proteção completa para você</span>
+              <span>Sua segurança é nossa prioridade</span>
             </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-              Sua tranquilidade é o nosso{' '}
-              <span className="text-primary">compromisso.</span>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+              Proteja o que realmente <span className="text-primary">importa</span> para você
             </h1>
-
-            <p className="text-lg md:text-xl text-white/90 max-w-lg drop-shadow-md">
-              Cotações personalizadas com as melhores seguradoras do mercado em
-              minutos. Proteção completa para você, seu carro e sua família.
+            
+            <p className="text-lg text-gray-600 max-w-xl">
+              Soluções completas em seguros com atendimento personalizado. 
+              Cote agora mesmo pelo nosso assistente virtual e durma tranquilo.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              {['Atendimento 24h', 'Melhores preços', 'Parcelas facilitadas'].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-2 text-sm text-white/80"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{item}</span>
-                  </div>
-                )
-              )}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-white px-8 h-14 text-lg shadow-xl shadow-primary/20 hover:scale-105 transition-all"
+                onClick={openTypebot}
+              >
+                Fazer Cotação Online
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="h-14 text-lg border-2"
+                onClick={openTypebot} // Pode mudar para whatsapp se preferir
+              >
+                Falar com Especialista
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              {["Atendimento 24h", "Cobertura Nacional", "Cotação Rápida", "Melhores Taxas"].map((item) => (
+                <div key={item} className="flex items-center gap-2 text-gray-600">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Quote Card */}
-          <div
-            className={cn(
-              'opacity-0',
-              isVisible && 'animate-fade-in-up animation-delay-200'
-            )}
-          >
-            <div className="bg-card rounded-2xl shadow-elevated p-6 md:p-8 border border-border/50">
-              <h2 className="text-2xl font-bold text-foreground mb-6">
-                Faça sua cotação grátis
-              </h2>
-
-              {/* Tabs */}
-              <div className="flex bg-muted rounded-xl p-1 mb-6">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={cn(
-                      'flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-medium transition-all duration-300',
-                      activeTab === tab.id
-                        ? 'bg-background text-foreground shadow-soft'
-                        : 'text-muted-foreground hover:text-foreground'
-                    )}
-                  >
-                    {tab.icon}
-                    <span>{tab.label}</span>
-                  </button>
-                ))}
+          {/* Imagem */}
+          <div className="relative animate-fade-in-right hidden md:block">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl transform rotate-3 scale-95 opacity-50 blur-3xl" />
+            <img 
+              src="/placeholder.svg" // Substitua pela sua foto real se tiver (ex: hero-family.jpg)
+              alt="Família Protegida" 
+              className="relative rounded-3xl shadow-2xl border-4 border-white object-cover w-full h-[600px]"
+            />
+            
+            {/* Card Flutuante de Confiança */}
+            <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-xs animate-float">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">100% Seguro</p>
+                  <p className="text-sm text-gray-500">Corretora Regulamentada</p>
+                </div>
               </div>
-
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="nome"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    Seu nome
-                  </label>
-                  <Input
-                    id="nome"
-                    type="text"
-                    placeholder="Digite seu nome completo"
-                    value={formData.nome}
-                    onChange={(e) =>
-                      setFormData({ ...formData, nome: e.target.value })
-                    }
-                    className="h-12"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="telefone"
-                    className="block text-sm font-medium text-foreground mb-2"
-                  >
-                    WhatsApp
-                  </label>
-                  <Input
-                    id="telefone"
-                    type="tel"
-                    placeholder="(00) 00000-0000"
-                    value={formData.telefone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, telefone: e.target.value })
-                    }
-                    className="h-12"
-                    required
-                  />
-                </div>
-
-                <Button type="submit" size="lg" className="w-full group">
-                  Simular agora
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-
-                <p className="text-xs text-center text-muted-foreground">
-                  Seus dados estão seguros. Não compartilhamos com terceiros.
-                </p>
-              </form>
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
-}
+};
